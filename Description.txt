@@ -1,0 +1,32 @@
+Component life cycle methods
+-ngOnChanges()
+-ngOnInit()
+-ngDoCheck()
+-ngAfterContentInit()
+-ngAfterContentChecked()
+-ngAfterViewInit()
+-ngAfterViewChecked()
+-ngOnDestroy()
+
+//===============================
+ngOnInit(): void {
+    // Component initialization code here
+  }
+
+  ngOnDestroy(): void {
+    // Component destruction code here
+  }
+//===============================
+
+DIRECTIVES
+- Manipulate the DOM
+- Adding or removing elements
+- Changing how elements look or behave
+Types of DIRECTIVES
+ - Component: - are directives with a template
+ - Structural DIRECTIVES: - Add or remove DOM elements
+ - Attribute DIRECTIVES: Modifying the appearance or behavior of elements.
+
+ Examples
+
+ 1. ngFor - Allows us to iterate on a list or collection. (Looping Through Data with ngFo)
