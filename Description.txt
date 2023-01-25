@@ -30,3 +30,12 @@ Types of DIRECTIVES
  Examples
 
  1. ngFor - Allows us to iterate on a list or collection. (Looping Through Data with ngFo)
+
+ So far, we've seen many ways that data can flow within an application:
+
+From the component class to the template: interpolation
+From the template to the component class: event binding
+From the parent component to its child component: input property binding
+What happens, though, if we want a child component to share data _up_ to its parent component? How do we facilitate this upward flow of data, and how can the parent component stay informed about what happens in the child component?
+
+Passing Data From Child to Parent: @Output
