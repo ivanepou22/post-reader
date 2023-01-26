@@ -39,3 +39,54 @@ From the parent component to its child component: input property binding
 What happens, though, if we want a child component to share data _up_ to its parent component? How do we facilitate this upward flow of data, and how can the parent component stay informed about what happens in the child component?
 
 Passing Data From Child to Parent: @Output
+
+//===============================
+// app-routing.module.ts
+
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { LibrariesComponent } from './components/pages/libraries/libraries.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'libraries/:id', component: LibrariesComponent },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+//========================================
+<!-- app.component.html -->
+
+<app-header></app-header>
+
+<router-outlet></router-outlet>
+
+//=======================================
+💡️ Dynamic Routing 💡
+Earlier on this page, we saw a route object defined in the App Routing Module that points to a dynamically-generated path:
+
+// app-routing-module.ts
+
+// ...
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'libraries/:id', component: LibrariesComponent },
+];
+
+// ...
+That is, with the above snippet, the user would access the library whose id is 8 when visiting http://localhost:4200/libraries/8 (and library whose id is 9 when visiting http://localhost:4200/libraries/9, etc.). However, how can we dynamically generate links to these views? The answer is with simple interpolation:
+// libraries.component.html
+
+<a routerLink="libraries/{{ library.id }}"> More Details </a>
+Since we'd presumably have access to the library object's id property, we can interpolate that as into the value of routerLink. The link will be dynamically generated for us, allowing your users to see more information about that particular object. That's all!
+
+Hint: Think about how you might leverage this strategy as you build detail pages for items in your final project.
