@@ -19,12 +19,14 @@ export class PostItemComponent {
   }
  }
 
- upvote(post: Post): void {
+ upvote(post: Post) {
   post.votes += 1;
+  return post;
  }
 
- downvote(post: Post): void {
+ downvote(post: Post) {
   post.votes -= 1;
+  return post;
  }
 
  hide(post: Post): void {
