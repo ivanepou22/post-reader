@@ -1,2 +1,3 @@
 <h1>{{title}}</h1>
 <app-post-item *ngFor="let post of posts" [post]="post" (hidePost)="hidePost($event)"></app-post-item>
+<app-create-post (addPost)="addPost($event)"></app-create-post>
