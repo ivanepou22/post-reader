@@ -1,7 +1,32 @@
-<form (ngSubmit)="submitForm()">
-    <input type="text" name="title" placeholder="Enter Post Title" [(ngModel)]="title">
-    <br>
-    <textarea name="body" placeholder="Enter Post Body" [(ngModel)]="body"></textarea>
-    <br>
-    <input type="submit" value="Submit" class="btn btn-primary">
+<form (ngSubmit)="submitForm()" #form="ngForm">
+  <input
+    type="text"
+    name="title"
+    class="form-control"
+    name="title"
+    required
+    minlength="6"
+    placeholder="Enter Post Title"
+    #postTitle="ngModel"
+    [(ngModel)]="title"
+  />
+  <br />
+  <textarea
+    name="body"
+    class="form-control"
+    placeholder="Enter Post Body"
+    [(ngModel)]="body"
+  ></textarea>
+  <br />
+  <input type="submit" [disabled]="form.invalid" value="Submit" class="btn btn-primary" />
+  <br />
 </form>
+
+<div *ngIf="postTitle?.invalid && postTitle?.dirty">
+  <div *ngIf="postTitle && postTitle.errors && postTitle.errors['required']">
+    Please provide a title for your blog post.
+  </div>
+  <div *ngIf="postTitle && postTitle.errors && postTitle.errors['minlength']">
+    The title of the blog must contain at least 6 characters.
+  </div>
+</div>
